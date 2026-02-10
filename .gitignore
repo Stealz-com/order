@@ -1,0 +1,14 @@
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+.mvn/
+maven-archiver/
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db

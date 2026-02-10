@@ -1,0 +1,17 @@
+package com.ecommerce.order.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import java.util.List;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class OrderRequest {
+    private List<OrderLineItemsDto> orderLineItemsDtoList;
+    private OrderAddress shippingAddress;
+    private java.math.BigDecimal totalAmount;
+    private String userId;
+    private String email;
+}

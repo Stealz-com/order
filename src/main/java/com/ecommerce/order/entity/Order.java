@@ -21,7 +21,23 @@ public class Order {
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<OrderLineItems> orderLineItemsList;
-   /// git status
-    
-    
+
+    private String userId;
+    private java.math.BigDecimal totalAmount;
+
+    // Storing address as JSON/String or Embedded. Using Embedded fields for
+    // simplicity with JPA
+    private String shippingFullName;
+    private String shippingAddressLine;
+    private String shippingCity;
+    private String shippingState;
+    private String shippingZipCode;
+    private String shippingPhone;
+
+    private String status; // PLACED, PAID, SHIPPED, DELIVERED, etc.
+    private String trackingNumber;
+    private String carrier;
+
+    @org.hibernate.annotations.CreationTimestamp
+    private java.time.LocalDateTime createdAt;
 }

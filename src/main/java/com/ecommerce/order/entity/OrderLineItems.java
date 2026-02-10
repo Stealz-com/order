@@ -20,4 +20,8 @@ public class OrderLineItems {
     private String skuCode;
     private BigDecimal price;
     private Integer quantity;
+
+    @Lob
+    @Column(columnDefinition = "LONGTEXT")
+    private String customImageUrl;
 }
