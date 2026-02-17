@@ -123,8 +123,13 @@ public class OrderService {
                 if (order.getOrderLineItemsList() != null) {
                     java.util.List<com.ecommerce.order.dto.OrderPlacedEvent.LineItem> eventItems = order
                             .getOrderLineItemsList().stream()
-                            .map(item -> new com.ecommerce.order.dto.OrderPlacedEvent.LineItem(item.getSkuCode(),
-                                    item.getPrice(), item.getQuantity()))
+                            .map(item -> new com.ecommerce.order.dto.OrderPlacedEvent.LineItem(
+                                    item.getSkuCode(),
+                                    item.getPrice(),
+                                    item.getQuantity(),
+                                    item.getCustomImageUrl(),
+                                    item.getOriginalImageUrl(),
+                                    item.getDesignInstructions()))
                             .collect(Collectors.toList());
                     event.setItems(eventItems);
                 }
@@ -155,6 +160,8 @@ public class OrderService {
         orderLineItems.setQuantity(orderLineItemsDto.getQuantity());
         orderLineItems.setSkuCode(orderLineItemsDto.getSkuCode());
         orderLineItems.setCustomImageUrl(orderLineItemsDto.getCustomImageUrl());
+        orderLineItems.setOriginalImageUrl(orderLineItemsDto.getOriginalImageUrl());
+        orderLineItems.setDesignInstructions(orderLineItemsDto.getDesignInstructions());
         return orderLineItems;
     }
 
@@ -175,7 +182,12 @@ public class OrderService {
                             if (order.getOrderLineItemsList() != null) {
                                 responseItems = order.getOrderLineItemsList().stream()
                                         .map(item -> new com.ecommerce.order.dto.OrderPlacedEvent.LineItem(
-                                                item.getSkuCode(), item.getPrice(), item.getQuantity()))
+                                                item.getSkuCode(),
+                                                item.getPrice(),
+                                                item.getQuantity(),
+                                                item.getCustomImageUrl(),
+                                                item.getOriginalImageUrl(),
+                                                item.getDesignInstructions()))
                                         .collect(Collectors.toList());
                             }
 
@@ -214,7 +226,12 @@ public class OrderService {
         if (order.getOrderLineItemsList() != null) {
             responseItems = order.getOrderLineItemsList().stream()
                     .map(item -> new com.ecommerce.order.dto.OrderPlacedEvent.LineItem(
-                            item.getSkuCode(), item.getPrice(), item.getQuantity()))
+                            item.getSkuCode(),
+                            item.getPrice(),
+                            item.getQuantity(),
+                            item.getCustomImageUrl(),
+                            item.getOriginalImageUrl(),
+                            item.getDesignInstructions()))
                     .collect(Collectors.toList());
         }
 

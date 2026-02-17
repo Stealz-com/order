@@ -15,4 +15,6 @@ public class OrderLineItemsDto {
     private BigDecimal price;
     private Integer quantity;
     private String customImageUrl;
+    private String originalImageUrl;
+    private String designInstructions;
 }

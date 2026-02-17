@@ -22,8 +22,9 @@ public class OrderController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @CircuitBreaker(name = "inventory", fallbackMethod = "fallbackMethod")
-    public String placeOrder(@RequestBody OrderRequest orderRequest) {
-        return orderService.placeOrder(orderRequest);
+    public org.springframework.http.ResponseEntity<String> placeOrder(@RequestBody OrderRequest orderRequest) {
+        return org.springframework.http.ResponseEntity.status(HttpStatus.CREATED)
+                .body(orderService.placeOrder(orderRequest));
     }
 
     @GetMapping
@@ -60,7 +61,9 @@ public class OrderController {
         return orderService.getOrderTracking(id, userId);
     }
 
-    public String fallbackMethod(OrderRequest orderRequest, RuntimeException runtimeException) {
-        return "Oops! Something went wrong, please order after some time!";
+    public org.springframework.http.ResponseEntity<String> fallbackMethod(OrderRequest orderRequest,
+            RuntimeException runtimeException) {
+        return org.springframework.http.ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
+                .body("Oops! Something went wrong, please order after some time!");
     }
 }

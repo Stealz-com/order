@@ -27,5 +27,8 @@ public class OrderPlacedEvent {
         private String skuCode;
         private BigDecimal price;
         private Integer quantity;
+        private String customImageUrl;
+        private String originalImageUrl;
+        private String designInstructions;
     }
 }

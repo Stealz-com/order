@@ -24,4 +24,12 @@ public class OrderLineItems {
     @Lob
     @Column(columnDefinition = "LONGTEXT")
     private String customImageUrl;
+
+    @Lob
+    @Column(columnDefinition = "LONGTEXT")
+    private String originalImageUrl;
+
+    @Lob
+    @Column(columnDefinition = "LONGTEXT")
+    private String designInstructions;
 }
